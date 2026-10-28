@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: svm-formulario-lead
+    runtime: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: TOKEN_URL
+        sync: false
+      - key: LEADS_URL
+        sync: false
+      - key: CLIENT_ID
+        sync: false
+      - key: CLIENT_SECRET
+        sync: false
+      - key: LEAD_SOURCE
+        value: portalxx

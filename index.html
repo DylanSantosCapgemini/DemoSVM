@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>SVM | Solicitação comercial</title>
+  <style>
+    :root{--svm:#008f68;--svm-dark:#006b4f;--ink:#17231f;--muted:#68756f;--line:#dce6e1;--bg:#f4f8f6;--white:#fff;--danger:#b42318;--success:#067647}
+    *{box-sizing:border-box} body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;color:var(--ink);background:linear-gradient(135deg,#edf7f2 0,#fff 52%,#e7f3ee 100%)}
+    .shell{min-height:100vh;display:grid;grid-template-columns:minmax(280px,38%) 1fr}.hero{padding:64px;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(155deg,var(--svm-dark),var(--svm));color:white;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:420px;height:420px;border:90px solid rgba(255,255,255,.08);border-radius:50%;right:-210px;bottom:-170px}.brand{font-weight:900;font-size:42px;letter-spacing:-3px}.brand small{display:block;font-size:12px;letter-spacing:2.2px;font-weight:600;margin-top:3px}.hero h1{font-size:clamp(34px,5vw,60px);line-height:1.02;letter-spacing:-2px;margin:72px 0 18px}.hero p{max-width:500px;font-size:18px;line-height:1.6;color:#e7fff5}.hero-foot{font-size:13px;color:#d6f4e9;z-index:1}.content{padding:42px clamp(22px,5vw,84px);overflow:auto}.card{max-width:900px;margin:auto;background:rgba(255,255,255,.95);border:1px solid var(--line);border-radius:24px;padding:34px;box-shadow:0 24px 60px rgba(1,57,41,.10)}
+    h2{margin:0 0 8px;font-size:28px}.intro{margin:0 0 28px;color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.full{grid-column:1/-1}label{display:block;font-size:13px;font-weight:700;margin:0 0 7px}input,select,textarea{width:100%;border:1px solid #cfdad5;background:#fff;border-radius:12px;padding:13px 14px;font:inherit;color:var(--ink);outline:none;transition:.2s}input:focus,select:focus,textarea:focus{border-color:var(--svm);box-shadow:0 0 0 4px rgba(0,143,104,.12)}textarea{min-height:120px;resize:vertical}.check{display:flex;gap:10px;align-items:flex-start;padding:4px 0}.check input{width:18px;height:18px;margin-top:2px;accent-color:var(--svm)}.check label{font-weight:500;line-height:1.4;margin:0}.actions{display:flex;align-items:center;gap:16px;margin-top:26px}.btn{border:0;border-radius:999px;background:var(--svm);color:white;padding:14px 24px;font-weight:800;font-size:15px;cursor:pointer;transition:.2s}.btn:hover{background:var(--svm-dark);transform:translateY(-1px)}.btn:disabled{opacity:.65;cursor:wait;transform:none}.status{font-size:14px;color:var(--muted)}.status.ok{color:var(--success)}.status.error{color:var(--danger)}.required{color:var(--danger)}
+    @media(max-width:900px){.shell{grid-template-columns:1fr}.hero{padding:34px;min-height:330px}.hero h1{margin:46px 0 12px}.content{padding:22px}.card{padding:24px}}@media(max-width:620px){.grid{grid-template-columns:1fr}.full{grid-column:auto}.actions{align-items:flex-start;flex-direction:column}}
+  </style>
+</head>
+<body>
+<main class="shell">
+  <section class="hero">
+    <div class="brand" aria-label="SVM">SVM<small>SISTEMA VERDES MARES</small></div>
+    <div><h1>Vamos construir novas oportunidades.</h1><p>Conte um pouco sobre sua empresa e seus objetivos. Nossa equipe entrará em contato para entender a melhor solução.</p></div>
+    <div class="hero-foot">Seus dados serão utilizados para atendimento da solicitação.</div>
+  </section>
+  <section class="content">
+    <form class="card" id="leadForm">
+      <h2>Fale com o time comercial</h2><p class="intro">Preencha os campos abaixo. Os itens com <span class="required">*</span> são obrigatórios.</p>
+      <div class="grid">
+        <div><label for="name">Nome completo</label><input id="name" name="name" autocomplete="name"></div>
+        <div><label for="email">E-mail <span class="required">*</span></label><input id="email" name="email" type="email" autocomplete="email" required></div>
+        <div><label for="phone">Telefone</label><input id="phone" name="phone" inputmode="tel" autocomplete="tel"></div>
+        <div><label for="company">Empresa</label><input id="company" name="company" autocomplete="organization"></div>
+        <div><label for="jobTitle">Cargo</label><input id="jobTitle" name="jobTitle" autocomplete="organization-title"></div>
+        <div><label for="city">Cidade</label><input id="city" name="city" autocomplete="address-level2"></div>
+        <div><label for="segment">Segmento</label><input id="segment" name="segment"></div>
+        <div><label for="interestRegion">Região de interesse</label><select id="interestRegion" name="interestRegion"><option value="">Selecione</option><option>Norte</option><option>Nordeste</option><option>Centro-Oeste</option><option>Sudeste</option><option>Sul</option><option>Nacional</option></select></div>
+        <div><label for="goal">Objetivo</label><input id="goal" name="goal"></div>
+        <div><label for="estimatedBudget">Orçamento estimado</label><select id="estimatedBudget" name="estimatedBudget"><option value="">Selecione</option><option>Até R$ 50.000</option><option>R$ 50.000 a R$ 100.000</option><option>R$ 100.000 a R$ 200.000</option><option>Acima de R$ 200.000</option></select></div>
+        <div><label for="timeline">Prazo</label><select id="timeline" name="timeline"><option value="">Selecione</option><option>Imediato</option><option>Próximo mês</option><option>Próximos 3 meses</option><option>Próximos 6 meses</option><option>Apenas pesquisando</option></select></div>
+        <div><label for="newsletterInterest">Interesse / origem</label><select id="newsletterInterest" name="newsletterInterest" required><option value="">Selecione</option><option value="DN8MINUTOS">Newsletter - 8 minutos</option><option value="DNDIARIOSALA">Newsletter - Diário de Sala</option><option value="DNREPORTAGENSESPECIAIS">Newsletter - Reportagens Especiais</option><option value="SVMINSIGHTS_EBOOK">SVM Insights - E-book</option></select></div>
+        <div class="full"><label for="message">Mensagem</label><textarea id="message" name="message" placeholder="Descreva brevemente sua necessidade."></textarea></div>
+        <input type="hidden" name="recordType" value="Anunciante">
+        <div class="full check"><input id="lgpdConsent" name="lgpdConsent" type="checkbox" required><label for="lgpdConsent">Concordo com o tratamento dos meus dados para atendimento desta solicitação. <span class="required">*</span></label></div>
+      </div>
+      <div class="actions"><button class="btn" id="submitBtn" type="submit">Enviar solicitação</button><div id="status" class="status" role="status" aria-live="polite"></div></div>
+    </form>
+  </section>
+</main>
+<script>
+  const form = document.getElementById('leadForm');
+  const statusEl = document.getElementById('status');
+  const button = document.getElementById('submitBtn');
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+    button.disabled = true; statusEl.className = 'status'; statusEl.textContent = 'Enviando...';
+    const data = Object.fromEntries(new FormData(form).entries()); data.lgpdConsent = form.lgpdConsent.checked; data.challengeWord = data.newsletterInterest;
+    try {
+      const response = await fetch('/api/leads', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(result.message || 'Não foi possível concluir o envio.');
+      statusEl.className = 'status ok'; statusEl.textContent = result.message || 'Solicitação enviada com sucesso.'; form.reset();
+    } catch (error) { statusEl.className = 'status error'; statusEl.textContent = error.message; }
+    finally { button.disabled = false; }
+  });
+</script>
+</body>
+</html>
