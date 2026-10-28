@@ -1,3 +1,2 @@
-# Formulário SVM para criação de Lead - v2
-
-A interface evidencia o fluxo Formulário → OAuth 2.0 → EAPI Customer. Nome completo, e-mail e interesse são obrigatórios. Os demais campos são opcionais e os valores vazios não são enviados à API.
+# Formulário SVM v3
+Fluxo visual animado: validação, OAuth 2.0 e criação do Lead na EAPI Customer. Os atrasos são apenas de apresentação; a chamada real ocorre em paralelo e as credenciais permanecem no Render.
