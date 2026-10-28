@@ -2,8 +2,10 @@ services:
   - type: web
     name: svm-formulario-lead
     runtime: node
+    plan: free
     buildCommand: npm install
     startCommand: npm start
+    healthCheckPath: /
     envVars:
       - key: NODE_ENV
         value: production
